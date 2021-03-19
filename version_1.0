@@ -221,6 +221,10 @@ par(mfrow=c(1,2))
 plotMA(res_sal, ylim = c(-2,2))
 plotMA(res_sal_shrink, ylim = c(-2,2))
 
+# 2.3. Eliminate gene update version number to allow matching using the attribute "ensembl_transcript_id"
+# an alternative exists, as an attribute that includes gene update number is available (need to add)
+rownames(res_sal_shrink) <- gsub("\\..*","", rownames(res_sal_shrink))
+
 # 3.0. Annotate transcripts; using biomaRt increases annotated transcripts significantly
 ensembl <- useEnsembl(biomart = "genes", dataset = "hsapiens_gene_ensembl")
 ensembl <- useDataset(dataset = "hsapiens_gene_ensembl", mart = ensembl)
