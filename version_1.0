@@ -4,6 +4,7 @@
 # 158 Breast Cancer cell lines, obtained through the NCBI SRA database. 
 # (QC, trimming and alignment performed using STAR (first iteration) and Salmon at: http://usegalaxy.eu
 
+# lncRNA_2.0 (Salmon, transcripts)
 # DYT36T2, MCF75 missing salmon quant
 
 x <- list.files(path = "t", pattern = "*.tabular"), full.names = TRUE)
@@ -206,6 +207,7 @@ ddsal <- collapseReplicates(ddsal, ddsal$Replicas)
 
 # 1.4. Run DESeq2 analysis (158 samples, ~30 min)
 DDSal1 <- DESeq(ddsal)
+rownames(DDSal1) <- gsub("\\..*","", rownames(DDSal1))
 
 # 2.0. Display results - alter DE analysis by defining contrast
 res_sal <- results(DDSal1, name = "Condicion_T_vs_NT")
@@ -240,11 +242,15 @@ colnames(trans.ids)[2] <- "transannot"
 
 # 3.2. Create df to merge annotation file with counts file
 res_sal_df <- as.data.frame(res_sal_shrink)
-merge(res_sal_df, trans.ids, by = "transannot")
+res_sal_df <- merge(res_sal_df, trans.ids, by = "transannot")
 
 # 4.0. Subsetting DE genes by significance and L2FC
-bc05 <- subset(res_sal_df, res_sal_df$padj < 0.01)
-bc_cut <- subset(bc05, bc05$log2FoldChange > 2.0)
+bc05 <- subset(res_sal_df, res_sal_df$padj < 0.05)
+bc_cut <- subset(bc05, bc05$log2FoldChange > 1.5)
+# 4.0.1. Order by highest L2FC
+bc_l2fc <- head(bc_cut[order(-bc_cut$log2FoldChange),], 100)
+bc_cut_mat <- as.matrix(bc_cut)
+rownames(bc_cut_mat) <- bc_cut$external_transcript_name
 
 # 4.1. Export .csv file
 write.csv(bc_cut, "../Desktop/bc_cut.csv")
@@ -254,12 +260,15 @@ gobc = bc_cut
 rownames(gobc) = rownames(gobc[gobc$log2FoldChange!=0,])
 BiocManager::install("TxDb.Hsapiens.UCSC.hg38.knownGene")
 
-# 5.0. vsd transformation for heatmap & PCA generation
+# 5.0. vsd transformation for heatmap & PCA generation (158 samples, ~1 min)
 vsd_sal <- vst(DDSal1, blind = FALSE)
 
-# 5.0.1 Matrix generation (vsd_sal is still a DESeqObject)
+# 5.0.1. Matrix generation (vsd_sal is still a DESeqObject)
 mat_sal <- assay(vsd_sal)
 mat_sal <- mat_sal - rowMeans(mat_sal)
+
+# 5.0.2. Remove gene version - same as above
+rownames(mat_sal) <- gsub("\\..*","", rownames(mat_sal))
 
 # 5.1. Use ggplot2 for PCAplot - define groups and shapes
 pcaData_sal <- plotPCA(vsd_sal, intgroup=c("Condicion", "Subtipo"), returnData=TRUE)
@@ -273,8 +282,26 @@ ggplot(pcaData_sal, aes(PC1, PC2, color=Subtipo, shape=Condicion)) +
 # (add2). Filtering by (rowVars(assay(vsd_sal)) -> gets highly variable genes, 
 # i.e, genes most variable across all samples, regardless of which samples they are
 topVarTranscripts <- head(order(-rowVars(assay(vsd_sal))),50)
-mat_sal <- assay(vsd_sal)[topVarTranscripts, ]
-mat_sal <- mat_sal - rowMeans(mat_sal)
-genmat <- as.matrix(geneannot)
-rownames(genmat) <- geneannot$SYMBOL
-row.names(mat1) <- as.vector(genmat[,2])
+mat_sal_var <- assay(vsd_sal)[topVarTranscripts, ]
+
+# 5.2.1. Remove gene version - same as above
+rownames(mat_sal_var) <- gsub("\\..*","", rownames(mat_sal_var))
+
+mat_sal_var <- mat_sal_var - rowMeans(mat_sal_var)
+trans.mat <- as.matrix(trans.ids)
+rownames(trans.mat) <- trans.ids$external_transcript_name
+row.names(mat_sal) <- as.vector(trans.mat[,2])
+
+# using biomaRt increases annotated transcripts significantly
+ensembl <- useEnsembl(biomart = "genes", dataset = "hsapiens_gene_ensembl")
+ensembl <- useDataset(dataset = "hsapiens_gene_ensembl", mart = ensembl)
+mart <- useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
+
+trans.ids <- getBM(attributes = c("external_transcript_name","ensembl_transcript_id"), filters = "ensembl_transcript_id", values = rownames(res_sal_shrink), mart = ensembl)
+listAttributes(mart)
+
+res_sal_shrink$transannot<- rownames(res_sal_shrink)
+colnames(trans.ids)[2] <- "transannot"
+res_sal_df <- as.data.frame(res_sal_shrink)
+res_sal_df<-merge(res_sal_df, trans.ids, by = "transannot")
+
