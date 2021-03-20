@@ -108,9 +108,9 @@ DSal <- merge(DSal, `MDAMB157-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB1571-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB1572-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB175VII-S`[c("Name", "NumReads")], by = "Name")
-DSal <- merge(DSal, `MDAMB231-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB2310-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB2311-S`[c("Name", "NumReads")], by = "Name")
+DSal <- merge(DSal, `MDAMB2312-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB2315-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB2316-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `MDAMB2317-S`[c("Name", "NumReads")], by = "Name")
@@ -178,14 +178,30 @@ DSal <- merge(DSal, `ZR7514-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `ZR75301-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `ZR75302-S`[c("Name", "NumReads")], by = "Name")
 
-colnames(DSal) <- c("ID", "AU5656","BT20", "BT201","BT202", "BT474", "BT474(1)", "BT483", "BT549", "BT549(1)", "BT549(2)", "CAL120", "CAL120(1)", "CAL148", "CAL51", "CAL51(1)", "CAL851", "CAL851(1)", "CAMA1", "CAMA1(1)", "CL184A1(3)", "CL184B5(2)", "CL600MPE", "DU4475", "EFM19", "EFM192A", "EVSAT", "HBL51", "HCC1143", "HCC1143(1)", "HCC1143(2)", "HCC1187(1)", "HCC1187(2)", "HCC1395", "HCC1395(1)", "HCC1419", "HCC1419(1)", "HCC1428", "HCC1428(1)", "HCC1500", "HCC1500(1)", "HCC1569(1)", "HCC1569(2)", "HCC1599", "HCC1599(1)", "HCC1806", "HCC1806(1)", "HCC1937", "HCC1937(1)", "HCC1937(2)", "HCC1954", "HCC1954(1)", "HCC1954(2)", "HCC202", "HCC2185", "HCC2218", "HCC2688", "HCC3153", "HCC38", "HCC38(1)", "HCC38(2)", "HCC518", "HCC70", "HCC70(1)", "HCC70(2)", "HCC712", "HDQP1", "HME1", "HS578T", "HS578T(1)", "JIMT1", "KPL1", "LY2", "MACLS2", "MB157", "MCF10A", "MCF10A1", "MCF10A2", "MCF10A3", "MCF10A4", "MCF12A", "MCF7", "MCF7(6)", "MDAMB134", "MDAMB1341","MDAMB134VI", "MDAMB157", "MDAMB157(1)", "MDAMB157(2)", "MDAMB175VII", "MDAMB231", "MDAMB231(0)", "MDAMB231(1)", "MDAMB231(5)", "MDAMB231(6)", "MDAMB231(7)", "MDAMB231(8)", "MDAMB231d", "MDAMB231p", "MDAMB231t", "MDAMB330", "MDAMB361", "MDAMB361(1)", "MDAMB361(2)", "MDAMB415", "MDAMB436(1)", "MDAMB436_T1","MDAMB436_T10", "MDAMB436_T11", "MDAMB436_T12", "MDAMB436_T13", "MDAMB436_T14", "MDAMB436_T2", "MDAMB436_T3", "MDAMB436_T4", "MDAMB436_T5", "MDAMB436_T6", "MDAMB436_T7","MDAMB436_T8", "MDAMB436_T9", "MDAMB436(2)", "MDAMB453", "MDAMB453(1)", "MDAMB453(2)", "MDAMB468", "MDAMB468(1)", "MFM223", "MX1", "OCUBM", "PDX1258", "PDX1258(2)", "PDX1328", "PDX1328(2)", "PDXHCI002", "PDXHCI002(2)", "PXDTLB", "PXDTLB1", "PXDTLB2", "PXDTLB3", "PXDTLB4", "PXDTLB5", "SKBR3", "SKBR3(10)", "SKBR3(6)", "SKBR3(7)", "SKBR3(8)", "SKBR3(9)", "SUM102", "SUM102(1)", "SUM1315", "SUM149", "SUM149(1)", "SUM159", "T47D", "T47D(1)", "UACC8126", "ZR751(4)", "ZR7530(1)", "ZR75302")
+colnames(DSal) <- c("ID", "AU5656","BT20", "BT201","BT202", "BT474", "BT474(1)", "BT483", "BT549", "BT549(1)", 
+"BT549(2)", "CAL120", "CAL120(1)", "CAL148", "CAL51", "CAL51(1)", "CAL851", "CAL851(1)", "CAMA1", "CAMA1(1)", 
+"CL184A1(3)", "CL184B5(2)", "CL600MPE", "DU4475", "EFM19", "EFM192A", "EVSAT", "HBL51", "HCC1143", "HCC1143(1)", 
+"HCC1143(2)", "HCC1187(1)", "HCC1187(2)", "HCC1395", "HCC1395(1)", "HCC1419", "HCC1419(1)", "HCC1428", "HCC1428(1)", 
+"HCC1500", "HCC1500(1)", "HCC1569(1)", "HCC1569(2)", "HCC1599", "HCC1599(1)", "HCC1806", "HCC1806(1)", "HCC1937", 
+"HCC1937(1)", "HCC1937(2)", "HCC1954", "HCC1954(1)", "HCC1954(2)", "HCC202", "HCC2185", "HCC2218", "HCC2688", "HCC3153", 
+"HCC38", "HCC38(1)", "HCC38(2)", "HCC518", "HCC70", "HCC70(1)", "HCC70(2)", "HCC712", "HDQP1", "HME1", "HS578T", "HS578T(1)", 
+"JIMT1", "KPL1", "LY2", "MACLS2", "MB157", "MCF10A", "MCF10A1", "MCF10A2", "MCF10A3", "MCF10A4", "MCF12A", "MCF7", "MCF7(6)",
+"MDAMB134", "MDAMB1341","MDAMB134VI", "MDAMB157", "MDAMB157(1)", "MDAMB157(2)", "MDAMB175VII", "MDAMB231", "MDAMB231(0)", 
+"MDAMB231(1)", "MDAMB231(5)", "MDAMB231(6)", "MDAMB231(7)", "MDAMB231(8)", "MDAMB231d", "MDAMB231p", "MDAMB231t", 
+"MDAMB330", "MDAMB361", "MDAMB361(1)", "MDAMB361(2)", "MDAMB415", "MDAMB436(1)", "MDAMB436_T1","MDAMB436_T10", 
+"MDAMB436_T11", "MDAMB436_T12", "MDAMB436_T13", "MDAMB436_T14", "MDAMB436_T2", "MDAMB436_T3", "MDAMB436_T4", 
+"MDAMB436_T5", "MDAMB436_T6", "MDAMB436_T7","MDAMB436_T8", "MDAMB436_T9", "MDAMB436(2)", "MDAMB453", 
+"MDAMB453(1)", "MDAMB453(2)", "MDAMB468", "MDAMB468(1)", "MFM223", "MX1", "OCUBM", "PDX1258", "PDX1258(2)", 
+"PDX1328", "PDX1328(2)", "PDXHCI002", "PDXHCI002(2)", "PXDTLB", "PXDTLB1", "PXDTLB2", "PXDTLB3", "PXDTLB4", 
+"PXDTLB5", "SKBR3", "SKBR3(10)", "SKBR3(6)", "SKBR3(7)", "SKBR3(8)", "SKBR3(9)", "SUM102", "SUM102(1)", 
+"SUM1315", "SUM149", "SUM149(1)", "SUM159", "T47D", "T47D(1)", "UACC8126", "ZR751(4)", "ZR7530(1)", "ZR75302")
 
 # 1.1. Import metadata (to feed DESeqMatrix)
 dsalmatrix <- read.csv("~/Desktop/Investigación/INCan/lncRNAs/dsalmatrix.csv")
 rownames(dsalmatrix) <- dsalmatrix$Linea
 dsalmatrix$Linea <- NULL
 
-# 1.2. DESeq2 dataset generation (may need to convert characters to factors)
+# 1.2. DESeq2 dataset generation (convert characters to factors; specify levels for desired experimental design)
 dsalmatrix$Condicion = factor(dsalmatrix$Condicion)
 dsalmatrix$Condicion <- relevel(dsalmatrix$Condicion, "NT")
 dsalmatrix$Tratamiento = as.factor(dsalmatrix$Tratamiento)
@@ -194,6 +210,7 @@ dsalmatrix$Lote = as.factor(dsalmatrix$Lote)
 dsalmatrix$Subtipo = as.factor(dsalmatrix$Subtipo)
 dsalmatrix$Subtipo <- relevel(dsalmatrix$Subtipo, "NM")
 dsalmatrix$Replicas = as.factor(dsalmatrix$Replicas)
+rownames(DSal) <- gsub("\\..*","", rownames(DSal))
 rownames(DSal) <- DSal$ID
 DSal$ID <- NULL
 
@@ -211,7 +228,8 @@ rownames(DDSal1) <- gsub("\\..*","", rownames(DDSal1))
 
 # 2.0. Display results - alter DE analysis by defining contrast
 res_sal <- results(DDSal1, name = "Condicion_T_vs_NT")
-# An alternative to name is contrast = c("Condicion", "T", "NT")
+# An alternative to name is contrast_bc = c("Condicion", "T", "NT")
+contrast_bc = c("Condicion", "T", "NT")
 # Where the second term is used as the control
 
 # 2.1. LFC Shrinkage: removes noise from low-count genes with high variances relative to the mean
@@ -224,7 +242,7 @@ plotMA(res_sal, ylim = c(-2,2))
 plotMA(res_sal_shrink, ylim = c(-2,2))
 
 # 2.3. Eliminate gene update version number to allow matching using the attribute "ensembl_transcript_id"
-# an alternative exists, as an attribute that includes gene update number is available (need to add)
+# alternatively, use getBM::attributes that includes gene update number (pending, need to add)
 rownames(res_sal_shrink) <- gsub("\\..*","", rownames(res_sal_shrink))
 
 # 3.0. Annotate transcripts; using biomaRt increases annotated transcripts significantly
@@ -241,6 +259,8 @@ res_sal_shrink$transannot<- rownames(res_sal_shrink)
 colnames(trans.ids)[2] <- "transannot"
 
 # 3.2. Create df to merge annotation file with counts file
+res_sal_shrink$transannot<- rownames(res_sal_shrink)
+colnames(trans.ids)[2] <- "transannot"
 res_sal_df <- as.data.frame(res_sal_shrink)
 res_sal_df <- merge(res_sal_df, trans.ids, by = "transannot")
 
@@ -284,7 +304,7 @@ ggplot(pcaData_sal, aes(PC1, PC2, color=Subtipo, shape=Condicion)) +
 topVarTranscripts <- head(order(-rowVars(assay(vsd_sal))),50)
 mat_sal_var <- assay(vsd_sal)[topVarTranscripts, ]
 
-# 5.2.1. Remove gene version - same as above
+# 5.2.1. Remove gene version - same as above (skip if not necessary)
 rownames(mat_sal_var) <- gsub("\\..*","", rownames(mat_sal_var))
 
 mat_sal_var <- mat_sal_var - rowMeans(mat_sal_var)
@@ -292,16 +312,22 @@ trans.mat <- as.matrix(trans.ids)
 rownames(trans.mat) <- trans.ids$external_transcript_name
 row.names(mat_sal) <- as.vector(trans.mat[,2])
 
-# using biomaRt increases annotated transcripts significantly
-ensembl <- useEnsembl(biomart = "genes", dataset = "hsapiens_gene_ensembl")
-ensembl <- useDataset(dataset = "hsapiens_gene_ensembl", mart = ensembl)
-mart <- useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
+# 6.0. Data visualization
+# 6.0.1. Build ID'd matrix for easier heatmap annotation
+df_sal <- as.data.frame(mat_sal)
+df_sal$transannot <- rownames(df_sal)
+trans.l2fc <- as.data.frame(bc_l2fc$transannot)
+trans.l2fc$external_transcript_name <- bc_l2fc$external_transcript_name
+colnames(trans.l2fc)[1] <- "transannot"
+x <- merge(df_sal, trans.l2fc, by = "transannot")
+rownames(x) <- x$external_transcript_name
+x$transannot <- NULL
+x$external_transcript_name <- NULL
+x <- as.matrix(x)
 
-trans.ids <- getBM(attributes = c("external_transcript_name","ensembl_transcript_id"), filters = "ensembl_transcript_id", values = rownames(res_sal_shrink), mart = ensembl)
-listAttributes(mart)
+# --- Create color palette
+cols = colorRampPalette(c("green", "black","red"))(100)
 
-res_sal_shrink$transannot<- rownames(res_sal_shrink)
-colnames(trans.ids)[2] <- "transannot"
-res_sal_df <- as.data.frame(res_sal_shrink)
-res_sal_df<-merge(res_sal_df, trans.ids, by = "transannot")
-
+# 6.2. Plot your heatmap
+hm_sal1 <- pheatmap(x, annotation_col = dsalmatrix, color = cols, fontsize = 6, 
+                    fontsize_row = 5, fontsize_col = 5, main = "DE transcripts: treated vs untreated")
