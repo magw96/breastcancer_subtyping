@@ -4,7 +4,7 @@
 # 158 Breast Cancer cell lines, obtained through the NCBI SRA database. 
 # (QC, trimming and alignment performed using STAR (first iteration) and Salmon at: http://usegalaxy.eu
 
-x <- list.files(path = "t", pattern = "*.tabular"), full.names = TRUE)
+x <- list.files(path = "~MiguelGW/Desktop/", pattern = "*.tabular", full.names = TRUE)
 
 # 0. Load required packages
 library(DESeq2)
@@ -176,7 +176,24 @@ DSal <- merge(DSal, `ZR7514-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `ZR75301-S`[c("Name", "NumReads")], by = "Name")
 DSal <- merge(DSal, `ZR75302-S`[c("Name", "NumReads")], by = "Name")
 
-colnames(DSal) <- c("ID", "AU5656","BT20", "BT201","BT202", "BT474", "BT474(1)", "BT483", "BT549", "BT549(1)", "BT549(2)", "CAL120", "CAL120(1)", "CAL148", "CAL51", "CAL51(1)", "CAL851", "CAL851(1)", "CAMA1", "CAMA1(1)", "CL184A1(3)", "CL184B5(2)", "CL600MPE", "DU4475", "EFM19", "EFM192A", "EVSAT", "HBL51", "HCC1143", "HCC1143(1)", "HCC1143(2)", "HCC1187(1)", "HCC1187(2)", "HCC1395", "HCC1395(1)", "HCC1419", "HCC1419(1)", "HCC1428", "HCC1428(1)", "HCC1500", "HCC1500(1)", "HCC1569(1)", "HCC1569(2)", "HCC1599", "HCC1599(1)", "HCC1806", "HCC1806(1)", "HCC1937", "HCC1937(1)", "HCC1937(2)", "HCC1954", "HCC1954(1)", "HCC1954(2)", "HCC202", "HCC2185", "HCC2218", "HCC2688", "HCC3153", "HCC38", "HCC38(1)", "HCC38(2)", "HCC518", "HCC70", "HCC70(1)", "HCC70(2)", "HCC712", "HDQP1", "HME1", "HS578T", "HS578T(1)", "JIMT1", "KPL1", "LY2", "MACLS2", "MB157", "MCF10A", "MCF10A1", "MCF10A2", "MCF10A3", "MCF10A4", "MCF12A", "MCF7", "MCF7(6)", "MDAMB134", "MDAMB1341","MDAMB134VI", "MDAMB157", "MDAMB157(1)", "MDAMB157(2)", "MDAMB175VII", "MDAMB231", "MDAMB231(0)", "MDAMB231(1)", "MDAMB231(5)", "MDAMB231(6)", "MDAMB231(7)", "MDAMB231(8)", "MDAMB231d", "MDAMB231p", "MDAMB231t", "MDAMB330", "MDAMB361", "MDAMB361(1)", "MDAMB361(2)", "MDAMB415", "MDAMB436(1)", "MDAMB436_T1","MDAMB436_T10", "MDAMB436_T11", "MDAMB436_T12", "MDAMB436_T13", "MDAMB436_T14", "MDAMB436_T2", "MDAMB436_T3", "MDAMB436_T4", "MDAMB436_T5", "MDAMB436_T6", "MDAMB436_T7","MDAMB436_T8", "MDAMB436_T9", "MDAMB436(2)", "MDAMB453", "MDAMB453(1)", "MDAMB453(2)", "MDAMB468", "MDAMB468(1)", "MFM223", "MX1", "OCUBM", "PDX1258", "PDX1258(2)", "PDX1328", "PDX1328(2)", "PDXHCI002", "PDXHCI002(2)", "PXDTLB", "PXDTLB1", "PXDTLB2", "PXDTLB3", "PXDTLB4", "PXDTLB5", "SKBR3", "SKBR3(10)", "SKBR3(6)", "SKBR3(7)", "SKBR3(8)", "SKBR3(9)", "SUM102", "SUM102(1)", "SUM1315", "SUM149", "SUM149(1)", "SUM159", "T47D", "T47D(1)", "UACC8126", "ZR751(4)", "ZR7530(1)", "ZR75302")
+colnames(DSal) <- c("ID", "AU5656","BT20", "BT201","BT202", "BT474", 
+"BT474(1)", "BT483", "BT549", "BT549(1)", "BT549(2)", "CAL120", "CAL120(1)", 
+"CAL148", "CAL51", "CAL51(1)", "CAL851", "CAL851(1)", "CAMA1", "CAMA1(1)", "CL184A1(3)", 
+"CL184B5(2)", "CL600MPE", "DU4475", "EFM19", "EFM192A", "EVSAT", "HBL51", "HCC1143", "HCC1143(1)", 
+"HCC1143(2)", "HCC1187(1)", "HCC1187(2)", "HCC1395", "HCC1395(1)", "HCC1419", "HCC1419(1)", "HCC1428", 
+"HCC1428(1)", "HCC1500", "HCC1500(1)", "HCC1569(1)", "HCC1569(2)", "HCC1599", "HCC1599(1)", "HCC1806", "HCC1806(1)", 
+"HCC1937", "HCC1937(1)", "HCC1937(2)", "HCC1954", "HCC1954(1)", "HCC1954(2)", "HCC202", "HCC2185", "HCC2218", "HCC2688", 
+"HCC3153", "HCC38", "HCC38(1)", "HCC38(2)", "HCC518", "HCC70", "HCC70(1)", "HCC70(2)", "HCC712", "HDQP1", "HME1", "HS578T",
+"HS578T(1)", "JIMT1", "KPL1", "LY2", "MACLS2", "MB157", "MCF10A", "MCF10A1", "MCF10A2", "MCF10A3", "MCF10A4", "MCF12A", 
+"MCF7", "MCF7(6)", "MDAMB134", "MDAMB1341","MDAMB134VI", "MDAMB157", "MDAMB157(1)", "MDAMB157(2)", "MDAMB175VII", 
+"MDAMB231", "MDAMB231(0)", "MDAMB231(1)", "MDAMB231(5)", "MDAMB231(6)", "MDAMB231(7)", "MDAMB231(8)", "MDAMB231d", 
+"MDAMB231p", "MDAMB231t", "MDAMB330", "MDAMB361", "MDAMB361(1)", "MDAMB361(2)", "MDAMB415", "MDAMB436(1)", 
+"MDAMB436_T1","MDAMB436_T10", "MDAMB436_T11", "MDAMB436_T12", "MDAMB436_T13", "MDAMB436_T14", "MDAMB436_T2", 
+"MDAMB436_T3", "MDAMB436_T4", "MDAMB436_T5", "MDAMB436_T6", "MDAMB436_T7","MDAMB436_T8", "MDAMB436_T9", 
+"MDAMB436(2)", "MDAMB453", "MDAMB453(1)", "MDAMB453(2)", "MDAMB468", "MDAMB468(1)", "MFM223", "MX1", "OCUBM", 
+"PDX1258", "PDX1258(2)", "PDX1328", "PDX1328(2)", "PDXHCI002", "PDXHCI002(2)", "PXDTLB", "PXDTLB1", "PXDTLB2", 
+"PXDTLB3", "PXDTLB4", "PXDTLB5", "SKBR3", "SKBR3(10)", "SKBR3(6)", "SKBR3(7)", "SKBR3(8)", "SKBR3(9)", "SUM102", 
+"SUM102(1)", "SUM1315", "SUM149", "SUM149(1)", "SUM159", "T47D", "T47D(1)", "UACC8126", "ZR751(4)", "ZR7530(1)", "ZR75302")
 
 # 1.1. Import metadata (to feed DESeqMatrix)
 dsalmatrix <- read.csv("~/Desktop/Investigación/INCan/lncRNAs/dsalmatrix.csv")
@@ -231,10 +248,17 @@ rownames(res_sal_shrink) <- gsub("\\..*","", rownames(res_sal_shrink))
 ensembl <- useEnsembl(biomart = "genes", dataset = "hsapiens_gene_ensembl")
 ensembl <- useDataset(dataset = "hsapiens_gene_ensembl", mart = ensembl)
 mart <- useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
-listAttributes(mart)
+
+listAttributes(mart) # lists available attributes to retrieve from the Ensembl database
+
+# 3.0.5. Specify the output
 trans.ids <- getBM(attributes = c("external_transcript_name","ensembl_transcript_id"), 
                    filters = "ensembl_transcript_id", values = rownames(res_sal_shrink), 
                    mart = ensembl)
+# 3.0.6. You can also include gene ID, description (...)
+mart.ids <- getBM(attributes = c("external_transcript_name","ensembl_transcript_id",
+                  "external_gene_name", "ensembl_gene_id", "description"), filters = 
+                  "ensembl_transcript_id", values = rownames(res_sal_shrink), mart = ensembl)
 
 # 3.1. Create new column for annotated transcripts
 res_sal_shrink$transannot<- rownames(res_sal_shrink)
@@ -255,10 +279,10 @@ rownames(bc_cut_mat) <- bc_cut$external_transcript_name
 # 4.1. Export .csv file
 write.csv(bc_cut, "../Desktop/bc_cut.csv")
 
-#     DO NOT RUN: Gene Ontology (WIP)
-    gobc = bc_cut
-    rownames(gobc) = rownames(gobc[gobc$log2FoldChange!=0,])
-    BiocManager::install("TxDb.Hsapiens.UCSC.hg38.knownGene")
+# DO NOT RUN: Gene Ontology (WIP)
+gobc = bc_cut
+rownames(gobc) = rownames(gobc[gobc$log2FoldChange!=0,])
+BiocManager::install("TxDb.Hsapiens.UCSC.hg38.knownGene")
 
 # 5.0. vsd transformation for heatmap & PCA generation (158 samples, ~1 min)
 vsd_sal <- vst(DDSal1, blind = FALSE)
@@ -277,9 +301,9 @@ ggplot(pcaData_sal, aes(PC1, PC2, color=Subtipo, shape=Condicion)) +
   scale_shape_manual(values = c(20,10))
 
 # 5.2. Filter transcripts with highest variance (in descending order)
-# --- add1. Filtering by (res_sal_shrink$log2FoldChange) -> gets the most DE genes, 
+# (add1). Filtering by (res_sal_shrink$log2FoldChange) -> gets the most DE genes, 
 # i.e, genes with the biggest differences between specific, predefined groups
-# --- add2. Filtering by (rowVars(assay(vsd_sal)) -> gets highly variable genes, 
+# (add2). Filtering by (rowVars(assay(vsd_sal)) -> gets highly variable genes, 
 # i.e, genes most variable across all samples, regardless of which samples they are
 topVarTranscripts <- head(order(-rowVars(assay(vsd_sal))),50)
 mat_sal_var <- assay(vsd_sal)[topVarTranscripts, ]
@@ -298,7 +322,6 @@ res_sal_df <- as.data.frame(res_sal_shrink)
 res_sal_df<-merge(res_sal_df, trans.ids, by = "transannot")
 
 # 6.0. Data visualization
-# --- This example uses samples ordered by L2FC in descending order
 # 6.0.1. Build ID'd matrix for easier heatmap annotation
 df_sal <- as.data.frame(mat_sal)
 df_sal$transannot <- rownames(df_sal)
@@ -337,5 +360,3 @@ vol_sal1 <- ggplot(res_tb) +
        theme(legend.position = "none",
                          plot.title = element_text(size = rel(1.5), hjust = 0.5),
                          axis.title = element_text(size = rel(1.25)))
-
-# Pending: cluster profiler (Gene Ontology analysis)
