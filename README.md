@@ -5,5 +5,6 @@ Second iteration (using Salmon) to quantify transcripts from 158 Breast Cancer c
 
 (QC, trimming and alignment performed using STAR (first iteration) and Salmon (second iteration) from http://usegalaxy.eu
 
-# Breast Cancer Subtyping of RNA-Seq data using genefu (AIMS, SSP, PAM50)
+# breastcancer_subtyping.R
+Breast Cancer Subtyping of RNA-Seq data using genefu (AIMS, SSP, PAM50)
 
